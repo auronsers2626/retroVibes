@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level Up</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Level Up</h1>
+    </header>
+    <nav>
+        <a href="#novedades" class="active">Novedades</a>
+        <a href="#juegos-destacados">Juegos Destacados</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#comunidad">Comunidad</a>
+    </nav>
+    <div class="banner"></div>
+    <section id="novedades" class="active">
+        <h2>Novedades</h2>
+        <p>Aquí encontrarás las últimas noticias y actualizaciones del mundo de los videojuegos.</p>
+    </section>
+    <section id="juegos-destacados" class="games">
+        <div class="game">
+            <img src="red_dead_redemption_2.jpg" alt="Red Dead Redemption 2" class="game-image">
+            <p><a href="juego1.html" target="_blank">Red Dead Redemption 2</a></p>
+        </div>
+        <div class="game">
+            <img src="the_last_of_us.jpg" alt="The Last of Us" class="game-image">
+            <p><a href="juego2.html" target="_blank">The Last of Us</a></p>
+        </div>
+        <div class="game">
+            <img src="uncharted_4.jpg" alt="Uncharted 4" class="game-image">
+            <p><a href="juego3.html" target="_blank">Uncharted 4</a></p>
+        </div>
+    </section>
+    <section id="contacto" class="contact">
+        <h2>Contacto</h2>
+        <p>Si tienes alguna pregunta, no dudes en ponerte en contacto con nosotros.</p>
+        <form>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="mensaje">Mensaje:</label><br>
+            <textarea id="mensaje" name="mensaje" rows="4" cols="50" required></textarea><br><br>
+            <input type="submit" value="Enviar">
+        </form>
+    </section>
+    <section id="registro">
+        <div class="register">
+            <h2>Regístrate</h2>
+            <form>
+                <input type="text" id="usuario" name="usuario" placeholder="Nombre de Usuario" required><br>
+                <input type="email" id="correo" name="correo" placeholder="Correo Electrónico" required><br>
+                <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required><br>
+                <input type="submit" value="Crear Cuenta">
+            </form>
+        </div>
+    </section>
+    <section id="comunidad">
+        <div class="community">
+            <h2>Comunidad</h2>
+            <div class="comment">
+                <h3>Usuario1</h3>
+                <p>¡Me encanta este sitio web! He descubierto muchos juegos retro que no conocía.</p>
+            </div>
+            <div class="comment">
+                <h3>Usuario2</h3>
+                <p>¿Alguien tiene recomendaciones de juegos clásicos para PS1?</p>
+            </div>
+            <div class="comment">
+                <h3>Usuario3</h3>
+                <p>¡Gracias por mantener viva la nostalgia de los videojuegos retro!</p>
+            </div>
+            <form class="comment-form">
+                <h3>Deja tu comentario</h3>
+                <textarea id="comentario" name="comentario" rows="4" placeholder="Escribe tu comentario aquí..." required></textarea><br><br>
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const links = document.querySelectorAll('nav a');
+            const sections = document.querySelectorAll('section');
+            
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    links.forEach(link => link.classList.remove('active'));
+                    link.classList.add('active');
+
+                    const target = link.getAttribute('href').substring(1);
+                    sections.forEach(section => {
+                        if (section.id === target) {
+                            section.classList.add('active');
+                        } else {
+                            section.classList.remove('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1b2838;
+    color: #c7d5e0;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #171a21;
+    padding: 10px;
+    text-align: center;
+}
+nav {
+    background-color: #1b2838;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+nav a {
+    color: #c7d5e0;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: opacity 0.3s;
+}
+nav a:hover {
+    opacity: 0.7;
+}
+nav a.active {
+    opacity: 0.5;
+}
+.banner {
+    width: 100%;
+    height: 200px;
+    background: url('banner.jpg') no-repeat center center;
+    background-size: cover;
+}
+section {
+    display: none;
+    padding: 20px;
+}
+section.active {
+    display: block;
+}
+.games {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.game {
+    width: 200px;
+    margin: 10px;
+}
+.game img {
+    width: 100%;
+    border-radius: 5px;
+    transition: opacity 0.3s ease;
+}
+.game img:hover {
+    opacity: 0.5;
+}
+.game p {
+    text-align: center;
+}
+.contact {
+    text-align: center;
+}
+.register {
+    background-color: #2a3b4c;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+}
+.register input[type="text"],
+.register input[type="email"],
+.register input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+.register input[type="submit"] {
+    background-color: #556772;
+    color: #c7d5e0;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.register input[type="submit"]:hover {
+    background-color: #778899;
+}
+.community {
+    background-color: #2a3b4c;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+.comment {
+    background-color: #1b2838;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.comment h3 {
+    margin: 0;
+    color: #c7d5e0;
+}
+.comment p {
+    margin: 5px 0 0;
+    color: #c7d5e0;
+}
+.comment-form {
+    background-color: #1b2838;
+    padding: 20px;
+    border-radius: 10px;
+}
+.comment-form textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #2a3b4c;
+    color: #c7d5e0;
+}
+.comment-form input[type="submit"] {
+    background-color: #556772;
+    color: #c7d5e0;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.comment-form input[type="submit"]:hover {
+    background-color: #778899;
+}
+
+
+
